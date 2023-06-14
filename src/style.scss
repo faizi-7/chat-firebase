@@ -1,0 +1,292 @@
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin laptop {
+    @media screen and (max-width: 1200px) {
+        @content;
+    }
+}
+
+// Styles for Login & Register Page
+.formContainer {
+    background-color: #E9F8F9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 60px;
+        border-radius: 12px;
+        .logo {
+            color: #537FE7;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .title {
+            color: #537FE7;
+            font-size: 16px;
+
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            input {
+                width: 300px;
+                padding: 15px;
+                border: none;
+                border-bottom: 1.5px solid #DDE6ED;
+                &::placeholder {
+                    color: #9DB2BF;
+                }
+            }
+            label {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              color: #9DB2BF;
+              gap: 20px;
+              img {
+                width: 30px;
+              }  
+            }
+            button {
+                padding: 10px;
+                color: white;
+                background-color: #537FE7;
+                border: none;
+                cursor: pointer;
+            }
+        }
+        p {
+            color: #526D82;
+            margin-top: 10px;
+        }
+    }
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #E9F8F9;
+    .container {
+        height: 80%;
+        width: 65%;
+        @include tablet {
+            width: 90%;
+        }
+        border: 1px solid white;
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        .sidebar {
+            flex: 1;
+            background-color: #212A3E;
+            position: relative;
+            .navbar {
+                display: flex;
+                background-color: #181823;
+                justify-content: space-between;
+                height: 50px;
+                padding: 10px 16px;
+                align-items: center;
+                .logo {
+                    color: #537FE7;
+                    font-size: 20px;
+                    font-weight: bold;
+                    @include tablet {
+                        display: none;
+                    }
+                }
+                .user {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 10px;
+                    img {
+                        width: 24px;
+                        height: 24px;
+                        object-fit: cover;
+                    }
+                    span {
+                        color: #E9F8F9;
+                        font-size: 14px;
+                    }
+                    button {
+                        padding: 4px 8px;
+                        font-size: 12px;
+                        cursor: pointer;
+                        color: #DDE6ED;
+                        background-color: #F24C3D;
+                        border: none;
+                        @include tablet{
+                            position: absolute;
+                            bottom: 10pxb;
+                        }
+                    }
+                }
+            }
+            .search {
+                border-bottom: 2px solid #383f4f;
+                .searchForm {
+                    padding: 5px 10px;
+                    input {
+                        padding: 5px 10px;
+                        width: 100%;
+                        color: #DDE6ED;
+                        border: none;
+                        background-color: transparent;
+                        outline: none;
+                        &::placeholder {
+                            color: #878b92;
+                        }
+                    }
+                }
+            }
+            .userChat {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                &:hover {
+                    background-color: #181823;
+                }
+                cursor: pointer;
+                img {
+                    width: 40px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                .userChatInfo {
+                    span {
+                        font-weight: bolder;
+                        color: #DDE6ED;
+                    }
+                    p {
+                        font-size: 14px;
+                        color: #878b92;
+                    }
+                }
+            }
+        }
+        .chat {
+            flex: 2;
+            .chatInfo {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 50px;
+                background-color: #212A3E;
+                padding: 10px;
+                span {
+                    color: #DDE6ED;
+                }
+                .chatIcons {
+                    display: flex;
+                    gap: 10px;
+                    img {
+                        width: 24px;
+                    }
+                }
+            }
+            .messages {
+                background-color: #DDE6ED;
+                padding: 10px;
+                height: calc(100% - 110px);
+                overflow-y: scroll;
+                .message {
+                    margin-bottom: 20px;
+                    display: flex;
+                    gap: 20px;
+                    .messageInfo {
+                        display: flex;
+                        flex-direction: column;
+                        color: #878b92;
+                        font-weight: lighter;
+                        img {
+                            width: 40px;
+                            height: 40px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+                    }
+                    .messageContent {
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        img {
+                            width: 50%;
+                        }
+                        p {
+                            background-color: white;
+                            padding: 10px 20px;
+                            border-radius: 0px 10px 10px 10px;
+                            max-width: max-content;
+                        }
+                    }
+                    &.owner {
+                        flex-direction: row-reverse;
+                        .messageContent {
+                            align-items: flex-end;
+                            p{
+                                background-color: #537FE7;
+                                color: #E9F8F9;
+                                border-radius: 10px 0 10px 10px ;
+                            }
+                        }
+                    }
+                }
+            }
+            .input {
+                height: 60px;
+                background-color: white;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                input {
+                    width: 80%;
+                    border: none;
+                    outline: none;
+                    color: #212A3E;
+                    font-size: 18px;
+                    &::placeholder {
+                        color: #9DB2BF;
+                    }
+                }
+                .send {
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                    img {
+                        height: 24px;
+                        cursor: pointer;
+                    }
+                    button {
+                        padding: 10px 16px;
+                        background-color: #537FE7;
+                        border: none;
+                        color: #E9F8F9 ;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
